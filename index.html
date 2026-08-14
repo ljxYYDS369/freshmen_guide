@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>新生校园网站导航</title>
+<style>
+  :root {
+    --primary: #0C0C09;
+    --secondary: #312C85;
+    --surface: #F4F4F1;
+    --border: #E2E2DC;
+    --border-hover: #0C0C09;
+    --muted: #6B6B66;
+    --text: #0C0C09;
+    --radius: 8px;
+    --radius-sm: 4px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--surface);
+    color: var(--text);
+    font-family: "Open Sans", "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .container {
+    width: 100%;
+    max-width: clamp(100%, 92vw, 760px);
+    margin: 0 auto;
+    padding: clamp(24px, 5vw, 56px) clamp(16px, 4vw, 24px) clamp(40px, 6vw, 72px);
+  }
+
+  header {
+    margin-bottom: clamp(20px, 3vw, 32px);
+  }
+
+  h1 {
+    font-family: "Inter", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    font-size: clamp(1.4rem, 4vw, 1.85rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: clamp(16px, 2vw, 20px);
+    color: var(--primary);
+  }
+
+  .search-wrap {
+    position: relative;
+  }
+
+  #search {
+    width: 100%;
+    padding: clamp(10px, 1.6vw, 14px) clamp(14px, 2vw, 18px) clamp(10px, 1.6vw, 14px) clamp(38px, 5vw, 46px);
+    font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+    font-family: inherit;
+    color: var(--text);
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  #search::placeholder { color: var(--muted); }
+
+  #search:focus-visible {
+    border-color: var(--border-hover);
+    box-shadow: 0 0 0 3px rgba(12, 12, 9, 0.08);
+  }
+
+  .search-icon {
+    position: absolute;
+    left: clamp(12px, 2vw, 16px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(14px, 2vw, 17px);
+    height: clamp(14px, 2vw, 17px);
+    color: var(--muted);
+    pointer-events: none;
+  }
+
+  #list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 1.4vw, 14px);
+  }
+
+  .item {
+    display: block;
+    padding: clamp(12px, 2vw, 18px) clamp(14px, 2.4vw, 20px);
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .item:hover, .item:focus-visible {
+    border-color: var(--border-hover);
+    transform: translateY(-1px);
+    outline: none;
+  }
+
+  .item-title {
+    font-family: "Inter", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: clamp(3px, 0.6vw, 5px);
+    word-break: break-word;
+  }
+
+  .item-url {
+    font-family: "Inconsolata", "SF Mono", Menlo, Consolas, monospace;
+    font-size: clamp(0.72rem, 1.3vw, 0.82rem);
+    color: var(--secondary);
+    word-break: break-all;
+    display: block;
+  }
+
+  .item-note {
+    font-size: clamp(0.78rem, 1.4vw, 0.88rem);
+    color: var(--muted);
+    margin-top: clamp(6px, 1vw, 10px);
+    line-height: 1.5;
+    word-break: break-word;
+  }
+
+  .empty {
+    text-align: center;
+    color: var(--muted);
+    padding: clamp(32px, 5vw, 56px) 0;
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+  }
+
+  .count-bar {
+    font-family: "Inconsolata", monospace;
+    font-size: clamp(0.65rem, 1.1vw, 0.74rem);
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-top: clamp(10px, 1.6vw, 16px);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>新生校园网站导航</h1>
+    <div class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input id="search" type="text" placeholder="搜索标题、网址或注释…" autocomplete="off" aria-label="搜索">
+    </div>
+    <div class="count-bar" id="count"></div>
+  </header>
+
+  <ul id="list"></ul>
+  <div class="empty" id="empty" style="display:none;">没有匹配的网站</div>
+</div>
+
+<script>
+  const data = [
+    {
+      title: "深技大官网",
+      url: "https://www.sztu.edu.cn/xs.htm",
+      note: "有公文通，需要大家关注。还有使用频率很高的教务系统"
+    },
+    {
+      title: "深技大网络",
+      url: "http://172.19.0.5/srun_portal_success?ac_id=17&theme=ope",
+      note: ""
+    },
+    {
+      title: "学工大厅",
+      url: "https://stu.sztu.edu.cn/#/affairs/copyAllAffairs?id=xgdt",
+      note: "放长假需要登记离校"
+    },
+    {
+      title: "学生门户",
+      url: "https://home-sztu-edu-cn-s.webvpn.sztu.edu.cn:8118/bmportal/index.portal?.pn=homeXs",
+      note: "里面有个叫做督导听课评价系统，会用到的"
+    },
+    {
+      title: "教材网",
+      url: "https://tubook.textbooks.wang/textbooks/common/main.jsp?t=1786680790923#/_student_onlineBook_onlineBook_jsp",
+      note: "线上买教材。也可以线下当场买，也建议找学长买，找二手平台买"
+    },
+    {
+      title: "深技大图书馆",
+      url: "https://lib.sztu.edu.cn/index",
+      note: ""
+    },
+    {
+      title: "教学辅助系统",
+      url: "https://acm.sztu.edu.cn:40130/hwsys/home",
+      note: "选实验室，看考勤"
+    },
+    {
+      title: "网安做题平台（逸朋导推荐）",
+      url: "https://sztubitbyte.com/",
+      note: ""
+    },
+    {
+      title: "深技大开源项目社区",
+      url: "https://atomgit.com/sztu",
+      note: ""
+    }
+  ];
+
+  const listEl = document.getElementById("list");
+  const searchEl = document.getElementById("search");
+  const countEl = document.getElementById("count");
+  const emptyEl = document.getElementById("empty");
+
+  function hostname(url) {
+    try {
+      return new URL(url).hostname.replace(/^www\./, "");
+    } catch (e) {
+      return url;
+    }
+  }
+
+  function render(items) {
+    listEl.innerHTML = "";
+    if (items.length === 0) {
+      emptyEl.style.display = "block";
+    } else {
+      emptyEl.style.display = "none";
+    }
+    items.forEach(item => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.className = "item";
+      a.href = item.url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+
+      const title = document.createElement("div");
+      title.className = "item-title";
+      title.textContent = item.title;
+
+      const url = document.createElement("span");
+      url.className = "item-url";
+      url.textContent = hostname(item.url);
+
+      a.appendChild(title);
+      a.appendChild(url);
+
+      if (item.note && item.note.trim()) {
+        const note = document.createElement("div");
+        note.className = "item-note";
+        note.textContent = item.note;
+        a.appendChild(note);
+      }
+
+      li.appendChild(a);
+      listEl.appendChild(li);
+    });
+    countEl.textContent = items.length === data.length
+      ? "共 " + data.length + " 个站点 · 点击卡片即跳转"
+      : "匹配 " + items.length + " / " + data.length + " · 点击卡片即跳转";
+  }
+
+  function filter(q) {
+    const query = q.trim().toLowerCase();
+    if (!query) return data;
+    return data.filter(item =>
+      item.title.toLowerCase().includes(query) ||
+      item.url.toLowerCase().includes(query) ||
+      (item.note && item.note.toLowerCase().includes(query))
+    );
+  }
+
+  searchEl.addEventListener("input", () => {
+    render(filter(searchEl.value));
+  });
+
+  render(data);
+</script>
+</body>
+</html>
